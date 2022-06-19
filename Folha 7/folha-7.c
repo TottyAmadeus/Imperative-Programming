@@ -123,8 +123,10 @@ void ordenar(char str[])
             {
                 temp =  alpha[k];
                 tempc = str[k];
+
                 alpha[k] = alpha[i];
                 str[k] = str[i];
+                
                 alpha[i] = temp;
                 str[i] = tempc;
             }
