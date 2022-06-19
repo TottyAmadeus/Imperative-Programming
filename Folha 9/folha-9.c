@@ -2,12 +2,19 @@
 #include <stdlib.h>
 #include <math.h>
 
+
+
+
+
 //9.3
 
 typedef struct
 {
     double x,y;
 } Ponto;
+
+
+
 
 // 9.3.5
 
@@ -18,7 +25,9 @@ typedef struct
 
 double rect_area(Rect r)
 {
-    return; // escrever area de retangulo com pontos usando fabs()
+    double altura = sqrt(((r.b.y - r.a.y)*(r.b.y - r.a.y)));
+    double largura = sqrt(((r.b.x - r.a.x)*(r.b.x - r.a.x)));
+    return (altura * largura);
 }
 
 
@@ -31,12 +40,20 @@ double distancia(Ponto a, Ponto b)
     return(sqrt(((b.x - a.x)*(b.x - a.x)) + ((b.y - a.y)*(b.y - a.y))));
 }
 
+
+
+
+
 // 9.3.2
 
 int mesmo_ponto(Ponto a, Ponto b)
 {
     if(distancia(a,b) > 0.000001) return 0; else 1; 
 }
+
+
+
+
 
 // 9.3.3
 
@@ -68,7 +85,15 @@ void dist10pontos()
 
 }
 
+
+
 int main()
 {
-    dist10pontos();
+    Ponto a, b;
+    double area;
+    scanf("%lf %lf", &a.x, &a.y);
+    scanf("%lf %lf", &b.x, &b.y);
+    Rect r = {a, b};
+    area = rect_area(r);
+    printf("%lf", area);
 }
