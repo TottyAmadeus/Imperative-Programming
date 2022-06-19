@@ -1,8 +1,22 @@
-// Dados fict�cios
+// Dados ficticios
+
 #define MAXDISC 100
 #define MAXALUNOS 1000
+#define MAX 11
+#define MAXNOME 100
+
+typedef struct aluno {
+char nome[MAXNOME], codigo[MAX];
+int disc[MAX], nd;
+} ALUNO;
+
+typedef struct disciplina {
+char nome[MAXNOME];
+int ano;
+} DISCIPLINA;
 
 int NDisc = 29;
+
 DISCIPLINA Disc[MAXDISC] = {
 	 {"Programacao Imperativa",1},
 	 {"Calculo Infinitesimal I",1},
@@ -36,6 +50,7 @@ DISCIPLINA Disc[MAXDISC] = {
 	};
 
 int NAlunos = 86;
+
 ALUNO Alunos[MAXALUNOS] = {
 	 {"Joao Diogo Silva","2000018001",{1,2,27,28},4},
 	 {"Mariana Pinto Matias","2001018003",{2,17,19,14,13,27,8,20,11},9},
