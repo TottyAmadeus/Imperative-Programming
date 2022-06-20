@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 #include ".\dados-folha-10.h"
 
@@ -18,7 +19,6 @@ int is_in_string(char nome[], char nomecompleto[])
     int size_nome = comprimento(nome);
     for(int i = 0; nomecompleto[i+size_nome] != '\0'; i++)
     {
-        // printf("Nome a testar: %s \n", nomecompleto);
         int j = 0;
         while(nome[j] != '\0' && nomecompleto[i+j] == nome[j])
         {
@@ -32,9 +32,10 @@ int is_in_string(char nome[], char nomecompleto[])
 void procura(char palavranome[])
 {
     printf("Resultados de alunos pelo nome %s \n \n", palavranome);
+    palavranome[strlen(palavranome)-1] = '\0';
     for(int i = 0; i < NAlunos; i++)
     {
-        if(is_in_string(palavranome, Alunos[i].nome))
+        if(strstr(Alunos[i].nome, palavranome))
         {
             printf("%s %s\n", Alunos[i].codigo, Alunos[i].nome);
         }
