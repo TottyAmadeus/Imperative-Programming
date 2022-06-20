@@ -85,7 +85,7 @@ void dist10pontos()
 
 }
 
-
+/*
 
 int main()
 {
@@ -96,4 +96,72 @@ int main()
     Rect r = {a, b};
     area = rect_area(r);
     printf("%lf", area);
+}
+
+*/
+
+typedef struct
+{
+    int dia, mes, ano;
+}data;
+
+
+int data_sort(data data1, data data2)
+{
+    if (data1.ano < data2.ano) return 1;
+    if ((data1.ano == data2.ano) && (data1.mes < data2.mes)) return 1;
+    if ((data1.ano == data2.ano) && (data1.mes == data2.mes) && (data1.dia < data2.dia)) return 1;
+    return 0;
+}
+
+void ordena_datas(data datavec[], int size)
+{
+    data temp;
+    for(int i = 0; i < size + 1; i++)
+    {
+        for(int k = i; k < size + 1; k++)
+        {
+            if(data_sort(datavec[i], datavec[k]))
+            {
+                temp = datavec[i];
+                datavec[i] = datavec[k];
+                datavec[k] = temp;
+            }
+        }
+    }
+}
+
+void menor_data(data datavec[], int size)
+{
+    data menor = datavec[0];
+    for(int i = 0; i < size + 1; i++)
+    {
+        if(data_sort(datavec[i], menor)) menor = datavec[i];
+    }
+    printf("%d / %d / %d", menor.dia , menor.mes, menor.ano);
+}
+
+int main()
+{
+    data datas[10] = {0};
+    data input;
+    input.dia = 0;
+    int size = 0;
+    int i = 0;
+    while (input.dia != -1)
+    {
+        scanf("%d %d %d", &input.dia, &input.mes, &input.ano);
+        if(input.dia != -1)
+        {
+            datas[i] = input;
+            // printf("%d / %d / %d \n", datas[i].dia , datas[i].mes, datas[i].ano);
+            size = i;
+            // printf("%d \n", size);
+            i++;
+        }
+    }
+    
+    
+    ordena_datas(datas, size);
+    menor_data(datas, size);
 }
